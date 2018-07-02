@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% block title %}
+
+    <title>出版社管理</title>
+{% endblock %}
+
+{% block body %}
+
+
+    <h3>出版社管理</h3>
+      <table class="table table-hover table-striped">
+        <thead>
+            <tr>
+
+                <th>序号</th>
+                <th>出版社名称</th>
+                <th>电话</th>
+                <th>地址</th>
+                <th>邮件</th>
+                <th>更多操作</th>
+
+            </tr>
+
+
+        </thead>
+
+        <tbody>
+            {% for foo in publish_obj %}
+                 <tr>
+                    <th>{{ forloop.counter }}</th>
+                    <td>{{ foo.name }}</td>
+                    <td>{{ foo.tel }}</td>
+                    <td>{{ foo.address }}</td>
+                    <td>{{ foo.email }}</td>
+
+                     <td>
+                         <a href="{% url 'compilePublish' foo.id %}" class="btn btn-default btn-sm ">编辑</a>
+                         <a href="{% url 'delPublish' foo.id %}" class="btn btn-default btn-sm">删除</a>
+
+                     </td>
+
+
+
+
+                </tr>
+
+            {% endfor %}
+
+
+
+        </tbody>
+
+    </table>
+
+
+
+{% endblock %}

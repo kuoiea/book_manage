@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+
+{% block title %}
+
+    <title>作者管理</title>
+{% endblock %}
+
+{% block body %}
+
+    <h3>作者管理</h3>
+    <table class="table table-hover table-striped">
+        <thead>
+            <tr>
+
+                <th>序号</th>
+                <th>作者姓名</th>
+                <th>性别</th>
+                <th>年龄</th>
+                <th>电话</th>
+                <th>邮件</th>
+                <th>住址</th>
+                <th>更多操作</th>
+
+            </tr>
+
+
+        </thead>
+
+        <tbody>
+            {% for foo in author_obj %}
+                 <tr>
+                    <th>{{ forloop.counter }}</th>
+                    <td>{{ foo.name }}</td>
+                    <td>{{ foo.sex.sex }}</td>
+                    <td>{{ foo.age }}</td>
+                    <td>{{ foo.authorDetial.tel }}</td>
+                    <td>{{ foo.authorDetial.email }}</td>
+                    <td>{{ foo.authorDetial.address }}</td>
+
+                     <td>
+                         <a href="{% url 'compileAuthor' foo.id %}" class="btn btn-default btn-sm ">编辑</a>
+                         <a href="{% url 'delAuthor' foo.id %}" class="btn btn-default btn-sm">删除</a>
+
+                     </td>
+
+
+
+
+                </tr>
+
+            {% endfor %}
+
+
+
+        </tbody>
+
+    </table>
+
+{% endblock %}

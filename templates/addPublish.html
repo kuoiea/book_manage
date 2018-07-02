@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block title %}
+
+    <title>添加出版社</title>
+{% endblock %}
+
+{% block body %}
+
+    <h3>添加出版社</h3>
+
+    <form action="{% url 'addPublish' %}" method="post">
+    {% csrf_token %}
+      <div class="form-group">
+        <label for="name">出版社名称</label>
+        <input type="text" class="form-control" id="name" name="name" placeholder="出版社名称">
+      </div>
+    <div class="form-group">
+        <label for="tel_for">电话</label>
+        <input type="number" class="form-control" id="tel_for" name="tel" placeholder="出版社电话">
+      </div>
+    <div class="form-group">
+        <label for="email_for">邮箱</label>
+        <input type="email" class="form-control" id="email_for" name="email" placeholder="出版社邮箱">
+      </div>
+    <div class="form-group">
+        <label for="address_for">地址</label>
+        <input type="text" class="form-control" id="address_for" name="address" placeholder="出版社地址">
+      </div>
+
+        <button type="submit" class="btn btn-default">提交</button>
+        <button type="reset" class="btn btn-default">重置</button>
+
+    </form>
+{% endblock %}

@@ -1,0 +1,80 @@
+{% extends 'base.html' %}
+
+
+{% block title %}
+
+    <title>Book Manage</title>
+
+{% endblock %}
+
+{% block body %}
+
+    <h3> 书籍管理 </h3>
+
+    <table class="table table-hover table-striped">
+        <thead>
+            <tr>
+
+                <th>序号</th>
+                <th>书名</th>
+                <th>作者</th>
+                <th>价格</th>
+                <th>是否出版</th>
+                <th>出版日期</th>
+                <th>出版社</th>
+                <th>更多操作</th>
+
+            </tr>
+
+
+        </thead>
+
+
+        <tbody>
+            {% for foo in book_obj %}
+                <tr>
+
+                    <th>{{ forloop.counter }}</th>
+                    <td>{{ foo.name }}</td>
+                    <td>
+                        {#                        作者姓名#}
+                        {% for author_name in foo.authors.all %}
+                            {{ author_name.name}}
+                            {% if not forloop.last %}
+                                ,
+                            {% endif %}
+
+                        {% endfor %}
+
+
+                    </td>
+
+
+                    <td>{{ foo.price }}</td>
+                    <td>
+                        {% if foo.is_pub %}
+                        已出版
+                        {% else %}
+                        未出版
+
+                        {% endif %}
+
+                    </td>
+                    <td>{{ foo.pub_date|date:'Y-m-d' }}</td>
+                    <td>{{ foo.publish.name }}</td>
+
+                    <td>
+                        <a href="{% url 'compileBook' foo.id %}" class="btn btn-default btn-sm ">编辑</a>
+                        <a href="{% url 'delBook' foo.id %}" class="btn btn-default btn-sm">删除</a>
+
+                    </td>
+
+
+                </tr>
+
+            {% endfor %}
+
+        </tbody>
+
+    </table>
+{% endblock %}

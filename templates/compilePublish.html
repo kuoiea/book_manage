@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block title %}
+
+    <title>出版社管理</title>
+
+{% endblock %}
+
+{% block body %}
+
+    <h3>出版社管理</h3>
+
+    <form action="{% url 'compilePublish' publish_obj.id %}" method="post">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="name_for">出版社名称</label>
+            <input type="text" class="form-control" id="name_for" name="name" placeholder="作者姓名"
+                   value="{{ publish_obj.name }}">
+        </div>
+
+        <div class="form-group">
+            <label for="tel_for">手机号</label>
+            <input type="number" class="form-control" id="tel_for" name="tel" placeholder="tel"
+                   value="{{ publish_obj.tel}}">
+        </div>
+
+        <div class="form-group">
+            <label for="exampleInputEmail1">邮箱地址</label>
+            <input type="text" class="form-control" id="exampleInputEmail1" name="email" placeholder="Email"
+                   value="{{ publish_obj.email }}">
+        </div>
+        <div class="form-group">
+            <label for="home_for">出版社地址</label>
+            <input type="text" class="form-control" id="home_for" name="address" placeholder="家庭地址"
+                   value="{{ publish_obj.address }}">
+        </div>
+
+
+        <button type="submit" class="btn btn-default">提交</button>
+        <button type="reset" class="btn btn-default">重置</button>
+
+    </form>
+{% endblock %}
